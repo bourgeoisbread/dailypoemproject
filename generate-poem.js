@@ -28,7 +28,6 @@ const poems = [
   }
 ];
 
-// Get today's poem based on day of year (EST timezone)
 const now = new Date();
 const estOffset = -5 * 60;
 const estTime = new Date(now.getTime() + (estOffset + now.getTimezoneOffset()) * 60000);
@@ -37,7 +36,6 @@ const diff = estTime - start;
 const oneDay = 1000 * 60 * 60 * 24;
 const dayOfYear = Math.floor(diff / oneDay);
 
-// Generate HTML with all poems data embedded
 const poemsJson = JSON.stringify(poems);
 
 const html = `<!DOCTYPE html>
@@ -170,7 +168,7 @@ function renderPoem() {
   const poem = poems[poemIndex];
   
   document.getElementById('poemText').textContent = poem.text;
-  document.getElementById('poemMeta').textContent = poem.title + ' — ' + poem.author;
+  document.getElementById('poemMeta').textContent = poem.title + ' - ' + poem.author;
   
   const dateStr = viewingDate.toLocaleDateString('en-US', { 
     weekday: 'long', 
@@ -180,7 +178,7 @@ function renderPoem() {
   });
   
   if (currentOffset === 0) {
-    document.getElementById('dateDisplay').textContent = "Today's Poem - " + dateStr;
+    document.getElementById('dateDisplay').textContent = 'Todays Poem - ' + dateStr;
   } else {
     document.getElementById('dateDisplay').textContent = 'Poem for ' + dateStr;
   }
