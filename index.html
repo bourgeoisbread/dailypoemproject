@@ -128,7 +128,7 @@ function renderPoem() {
   const poem = poems[poemIndex];
   
   document.getElementById('poemText').textContent = poem.text;
-  document.getElementById('poemMeta').textContent = poem.title + ' — ' + poem.author;
+  document.getElementById('poemMeta').textContent = poem.title + ' - ' + poem.author;
   
   const dateStr = viewingDate.toLocaleDateString('en-US', { 
     weekday: 'long', 
@@ -138,7 +138,7 @@ function renderPoem() {
   });
   
   if (currentOffset === 0) {
-    document.getElementById('dateDisplay').textContent = "Today's Poem - " + dateStr;
+    document.getElementById('dateDisplay').textContent = 'Todays Poem - ' + dateStr;
   } else {
     document.getElementById('dateDisplay').textContent = 'Poem for ' + dateStr;
   }
