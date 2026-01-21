@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Poem - She Walks in Beauty</title>
+
+<style>
+  :root {
+    --bg: #2b2b2b;
+    --text: #ffffff;
+    --button: #444;
+  }
+
+  body.light {
+    --bg: #f4f4f4;
+    --text: #111;
+    --button: #ddd;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .container {
+    max-width: 800px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .poem {
+    white-space: pre-wrap;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .meta {
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .date {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background: var(--button);
+    color: var(--text);
+    border: none;
+    padding: 10px 18px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 4px;
+  }
+
+  button:hover {
+    opacity: 0.85;
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="date">Poem for Wednesday, January 21, 2026</div>
+  <div class="poem">She walks in beauty, like the night
+Of cloudless climes and starry skies;
+And all that's best of dark and bright
+Meet in her aspect and her eyes.</div>
+  <div class="meta">She Walks in Beauty — Lord Byron</div>
+
+  <div>
+    <button onclick="toggleMode()">🌗 Dark / Light</button>
+  </div>
+</div>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("light");
+  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+}
+
+// Load saved theme
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+}
+</script>
+</body>
+</html>
