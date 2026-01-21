@@ -2,8 +2,8 @@ name: Update Daily Poem
 
 on:
   schedule:
-    # Runs at 00:01 UTC every day
-    - cron: '1 0 * * *'
+    # Runs at 05:00 UTC (midnight EST/1 AM EDT)
+    - cron: '0 5 * * *'
   workflow_dispatch: # Allows manual triggering
 
 jobs:
