@@ -2,52 +2,27 @@ const fs = require('fs');
 
 const poems = [
   {
-    text: `Shall I compare thee to a summer's day?
-Thou art more lovely and more temperate:
-Rough winds do shake the darling buds of May,
-And summer's lease hath all too short a date;
-Sometime too hot the eye of heaven shines,
-And often is his gold complexion dimm'd;
-And every fair from fair sometime declines,
-By chance or nature's changing course untrimm'd;
-But thy eternal summer shall not fade,
-Nor lose possession of that fair thou ow'st;
-Nor shall Death brag thou wander'st in his shade,
-When in eternal lines to time thou grow'st:
-So long as men can breathe or eyes can see,
-So long lives this, and this gives life to thee.`,
+    text: "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;\nSometime too hot the eye of heaven shines,\nAnd often is his gold complexion dimm'd;\nAnd every fair from fair sometime declines,\nBy chance or nature's changing course untrimm'd;\nBut thy eternal summer shall not fade,\nNor lose possession of that fair thou ow'st;\nNor shall Death brag thou wander'st in his shade,\nWhen in eternal lines to time thou grow'st:\nSo long as men can breathe or eyes can see,\nSo long lives this, and this gives life to thee.",
     title: "Sonnet 18",
     author: "William Shakespeare"
   },
   {
-    text: `She walks in beauty, like the night
-Of cloudless climes and starry skies;
-And all that's best of dark and bright
-Meet in her aspect and her eyes.`,
+    text: "She walks in beauty, like the night\nOf cloudless climes and starry skies;\nAnd all that's best of dark and bright\nMeet in her aspect and her eyes.",
     title: "She Walks in Beauty",
     author: "Lord Byron"
   },
   {
-    text: `I met a traveller from an antique land
-Who said—"Two vast and trunkless legs of stone
-Stand in the desert… Near them, on the sand,
-Half sunk a shattered visage lies…"`,
+    text: "I met a traveller from an antique land\nWho said—Two vast and trunkless legs of stone\nStand in the desert… Near them, on the sand,\nHalf sunk a shattered visage lies…",
     title: "Ozymandias",
     author: "Percy Bysshe Shelley"
   },
   {
-    text: `Tyger Tyger, burning bright,
-In the forests of the night;
-What immortal hand or eye,
-Could frame thy fearful symmetry?`,
+    text: "Tyger Tyger, burning bright,\nIn the forests of the night;\nWhat immortal hand or eye,\nCould frame thy fearful symmetry?",
     title: "The Tyger",
     author: "William Blake"
   },
   {
-    text: `Tell me not, in mournful numbers,
-Life is but an empty dream!
-For the soul is dead that slumbers,
-And things are not what they seem.`,
+    text: "Tell me not, in mournful numbers,\nLife is but an empty dream!\nFor the soul is dead that slumbers,\nAnd things are not what they seem.",
     title: "A Psalm of Life",
     author: "Henry Wadsworth Longfellow"
   }
@@ -55,7 +30,7 @@ And things are not what they seem.`,
 
 // Get today's poem based on day of year (EST timezone)
 const now = new Date();
-const estOffset = -5 * 60; // EST is UTC-5
+const estOffset = -5 * 60;
 const estTime = new Date(now.getTime() + (estOffset + now.getTimezoneOffset()) * 60000);
 const start = new Date(estTime.getFullYear(), 0, 0);
 const diff = estTime - start;
@@ -205,12 +180,11 @@ function renderPoem() {
   });
   
   if (currentOffset === 0) {
-    document.getElementById('dateDisplay').textContent = 'Today\'s Poem - ' + dateStr;
+    document.getElementById('dateDisplay').textContent = "Today's Poem - " + dateStr;
   } else {
     document.getElementById('dateDisplay').textContent = 'Poem for ' + dateStr;
   }
   
-  // Disable next button if we're at today
   document.getElementById('nextBtn').disabled = (currentOffset >= 0);
 }
 
@@ -236,12 +210,10 @@ function toggleMode() {
   localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
 }
 
-// Load saved theme
 if (localStorage.getItem('theme') === 'light') {
   document.body.classList.add('light');
 }
 
-// Initial render
 renderPoem();
 </script>
 </body>
