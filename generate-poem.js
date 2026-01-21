@@ -50,24 +50,7 @@ For the soul is dead that slumbers,
 And things are not what they seem.`,
     title: "A Psalm of Life",
     author: "Henry Wadsworth Longfellow"
-  },
-  {
-    text: `When I consider how my light is spent,
-Ere half my days, in this dark world and wide,
-And that one Talent which is death to hide,
-Lodg'd with me useless…`,
-    title: "On His Blindness",
-    author: "John Milton"
-  },
-  {
-    text: `Thou still unravish'd bride of quietness,
-Thou foster-child of silence and slow time,
-Sylvan historian, who canst thus express
-A flowery tale more sweetly than our rhyme:`,
-    title: "Ode on a Grecian Urn",
-    author: "John Keats"
   }
-  // You can add more poems here using the same format
 ];
 
 // Get today's poem based on day of year
@@ -178,4 +161,4 @@ if (localStorage.getItem('theme') === 'light') {
 </html>`;
 
 fs.writeFileSync('index.html', html);
-console.log(\`Generated poem: \${todaysPoem.title} by \${todaysPoem.author}\`);
+console.log('Generated poem: ' + todaysPoem.title + ' by ' + todaysPoem.author);
