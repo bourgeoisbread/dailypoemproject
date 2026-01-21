@@ -1,32 +1,17 @@
 const fs = require('fs');
 
-const poems = [
-  {
-    text: "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;\nSometime too hot the eye of heaven shines,\nAnd often is his gold complexion dimm'd;\nAnd every fair from fair sometime declines,\nBy chance or nature's changing course untrimm'd;\nBut thy eternal summer shall not fade,\nNor lose possession of that fair thou ow'st;\nNor shall Death brag thou wander'st in his shade,\nWhen in eternal lines to time thou grow'st:\nSo long as men can breathe or eyes can see,\nSo long lives this, and this gives life to thee.",
-    title: "Sonnet 18",
-    author: "William Shakespeare"
-  },
-  {
-    text: "She walks in beauty, like the night\nOf cloudless climes and starry skies;\nAnd all that's best of dark and bright\nMeet in her aspect and her eyes.",
-    title: "She Walks in Beauty",
-    author: "Lord Byron"
-  },
-  {
-    text: "I met a traveller from an antique land\nWho said—Two vast and trunkless legs of stone\nStand in the desert… Near them, on the sand,\nHalf sunk a shattered visage lies…",
-    title: "Ozymandias",
-    author: "Percy Bysshe Shelley"
-  },
-  {
-    text: "Tyger Tyger, burning bright,\nIn the forests of the night;\nWhat immortal hand or eye,\nCould frame thy fearful symmetry?",
-    title: "The Tyger",
-    author: "William Blake"
-  },
-  {
-    text: "Tell me not, in mournful numbers,\nLife is but an empty dream!\nFor the soul is dead that slumbers,\nAnd things are not what they seem.",
-    title: "A Psalm of Life",
-    author: "Henry Wadsworth Longfellow"
-  }
-];
+// Read poems from the simple text file
+const poemsText = fs.readFileSync('poems.txt', 'utf8');
+
+// Parse the poems
+const poemBlocks = poemsText.trim().split('\n===\n').filter(block => block.trim());
+const poems = poemBlocks.map(block => {
+  const parts = block.split('\n---\n');
+  const text = parts[0].trim();
+  const meta = parts[1].trim();
+  const [title, author] = meta.split(' — ');
+  return { text, title, author };
+});
 
 const now = new Date();
 const estOffset = -5 * 60;
@@ -218,4 +203,4 @@ renderPoem();
 </html>`;
 
 fs.writeFileSync('index.html', html);
-console.log('Generated poem for day ' + dayOfYear + ' of the year (EST)');
+console.log('Generated ' + poems.length + ' poems for day ' + dayOfYear + ' of the year (EST)');
